@@ -7,5 +7,27 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
-Thing.create(name:Faker::Company.name )
-Thing.create(name:Faker::Company.name )
+Grade.destroy_all
+Skill.destroy_all
+User.destroy_all
+
+a = Skill.create(name: 'ruby', description:'Syntaz Sugar')
+b = Skill.create(name: 'rails', description:'Stay on the rails...Convention')
+c = Skill.create(name: 'react', description:'make writing UI noooice!!!')
+ 
+# Skills could also be a homework with a grade
+d = Skill.create(name: 'Homework1', description:'CRUD ACTIONS!!')
+e = Skill.create(name: 'Homework2', description:'Cassino')
+
+skills =[a,b,c,d,e]
+
+
+5.times do |i|
+ user = User.create(name: Faker::Name.name)
+5.times do |i|
+ Grade.create(score: rand(100), skill_id: skills[i].id, user_id: user.id)
+ end
+end
+
+
+#this will make 5 skills, 5 users, and 25 grades since 5 grades will be made for each user
